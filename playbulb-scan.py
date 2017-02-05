@@ -14,11 +14,13 @@ for service in services:
 		print(characteristic)
 		print("    Handle: " + str(hex(characteristic.getHandle())))
 		if characteristic.supportsRead() == True:
+			value = ""
 			try:
-				print("        " + characteristic.read())
-				print("        " + list('%2x'%b for b in characteristic.read()))
+				value = characteristic.read()
 			except:
 				print("        BLE error")
 
 
+			print("        " + str(value))
+			print("        " + str(list('%2x'%b for b in value)))
 MyPlaybulp.disconnect()
